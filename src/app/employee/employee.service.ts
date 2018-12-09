@@ -19,7 +19,6 @@ export class EmployeeService {
   }
 
   updateCreateEmployee(employee: Employee): Observable<any> {
-    debugger
     const url = `${environment.backEndUrl}${environment.employeePath}/${employee.id}`;
     if (employee.id) {
       return this.httpApiService.put(url, employee);

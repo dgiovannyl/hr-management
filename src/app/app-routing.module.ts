@@ -25,8 +25,8 @@ const routes: Routes = [
     // canActivate: [AuthGuardService]
   },
   { path: 'callback', redirectTo: 'login' },
-  { path: '', pathMatch: 'full', redirectTo: 'login' }
-  // { path: '**', component: NotFoundComponent }
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
