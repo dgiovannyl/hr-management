@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { HttpApiService } from './http-api.service';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [],
+  providers: [HttpApiService]
 })
-export class CoreModule { }
+export class CoreModule {}
