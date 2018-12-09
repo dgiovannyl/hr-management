@@ -23,7 +23,7 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 1',
         age: 33,
         birthday: new Date(),
-        project: 1
+        projectId: 1
       },
       {
         id: 2,
@@ -31,7 +31,7 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 1',
         age: 30,
         birthday: new Date(),
-        project: 1
+        projectId: 1
       },
       {
         id: 3,
@@ -39,7 +39,7 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 3',
         age: 27,
         birthday: new Date(),
-        project: 3
+        projectId: 3
       },
       {
         id: 4,
@@ -47,7 +47,7 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 2',
         age: 30,
         birthday: new Date(),
-        project: 5
+        projectId: 5
       },
       {
         id: 5,
@@ -55,7 +55,7 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 2',
         age: 30,
         birthday: new Date(),
-        project: 6
+        projectId: 6
       }
     ];
 

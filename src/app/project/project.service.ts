@@ -8,21 +8,23 @@ import { Project } from './project.interface';
 export class ProjectService {
   constructor(private httpApiService: HttpApiService) {}
 
-  changeTeamSize(selectedId: number, oldId: number): void {
-    this.httpApiService
-      .get(environment.projectPath + '/' + selectedId)
-      .subscribe((project: Project) => {
-        project.teamSize++;
-        this.updateCreateProject(project).subscribe(resp => {});
-      });
+  changeTeamSize(selectedProjectId: number, oldProjectId: number): void {
+    if (selectedProjectId !== oldProjectId) {
+      if (selectedProjectId) {
+        const url = `${environment.backEndUrl}${environment.projectPath}/${selectedProjectId}`;
+        this.httpApiService.get(url).subscribe((project: Project) => {
+          project.teamSize++;
+          this.updateCreateProject(project).subscribe(resp => {});
+        });
+      }
 
-    if (oldId) {
-      this.httpApiService
-        .get(environment.projectPath + '/' + oldId)
-        .subscribe((project: Project) => {
+      if (oldProjectId) {
+        const url = `${environment.backEndUrl}${environment.projectPath}/${oldProjectId}`;
+        this.httpApiService.get(url).subscribe((project: Project) => {
           project.teamSize--;
           this.updateCreateProject(project).subscribe(resp => {});
         });
+      }
     }
   }
 
@@ -42,12 +44,6 @@ export class ProjectService {
       return this.httpApiService.put(url, project);
     } else {
       return this.httpApiService.post(url, project);
-    }
-  }
-
-  verifyTeamChanges(selectedId: number, oldId: number): void {
-    if (selectedId !== oldId) {
-      this.changeTeamSize(selectedId, oldId);
     }
   }
 }

@@ -1,0 +1,37 @@
+<h4>Create - Edit employee</h4>
+
+<div class="dialog-container">
+
+  <mat-form-field>
+    <input matInput placeholder="Name" [formControl]="nameFormControl">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Company" [formControl]="companyFormControl">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Age" [formControl]="ageFormControl">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="birthDayFormControl">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Projects" [formControl]="projectFormControl" name="project">
+      <mat-option *ngFor="let project of projects" [value]="project.id">
+        {{ project.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div mat-dialog-actions class="center-btn">
+    <button class="btn btn-secundary" (click)="onNoClick()">Cancel</button>
+
+    <button class="btn btn-secundary" mat-button [mat-dialog-close]="getEmployeePayload()">Save</button>
+  </div>
+
+</div>

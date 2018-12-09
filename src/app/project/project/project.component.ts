@@ -17,8 +17,8 @@ import { ProjectService } from '../project.service';
 export class ProjectComponent implements OnInit {
   dataSource: MatTableDataSource<Project>;
   displayedColumns = ['name', 'teamSize', 'customerName', 'actionsColumn'];
+  editProjectWidth = '500px';
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  projectWidth = '500px';
   projects: Project[];
   @ViewChild(MatSort) sort: MatSort;
 
@@ -84,7 +84,7 @@ export class ProjectComponent implements OnInit {
   private openProjectDialog(project: Project) {
     // Open the dialog with parameters.
     const dialogRef = this.dialog.open(EditProjectComponent, {
-      width: this.projectWidth,
+      width: this.editProjectWidth,
       data: project
     });
 
