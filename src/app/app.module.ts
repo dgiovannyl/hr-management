@@ -1,7 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -11,8 +15,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { EmployeeModule } from './employee/employee.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectModule } from './project/project.module';
-import { MatDialogModule } from '@angular/material/dialog';
-
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -29,7 +31,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     AuthenticationModule,
     EmployeeModule,
 
-    MatDialogModule
+    MatDialogModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

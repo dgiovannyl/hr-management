@@ -4,13 +4,13 @@
 
 export const environment = {
   production: false,
-  auth0Config: {
-    audience: 'https://dayro.auth0.com/userinfo',
-    clientID: 'B3ssMr0r0l2tOprsOk4pa1OUthcTtCqZ',
-    domain: 'dayro.auth0.com',
-    redirectUri: 'http://localhost:4200/callback',
-    responseType: 'token id_token',
-    scope: 'openid profile'
+  firebase: {
+    apiKey: 'AIzaSyA8eF3RhFCqdUfXmBjY8e5RIKUeS_8ckvQ',
+    authDomain: 'hrmanagement-fb50c.firebaseapp.com',
+    databaseURL: 'https://hrmanagement-fb50c.firebaseio.com',
+    projectId: 'hrmanagement-fb50c',
+    storageBucket: 'hrmanagement-fb50c.appspot.com',
+    messagingSenderId: '117065232685'
   },
   backEndUrl: 'http://localhost:4200/api/',
   employeePath: 'employees',
