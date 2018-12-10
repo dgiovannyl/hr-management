@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core/authentication.service';
 
 @Component({
   selector: 'app-not-found',
@@ -7,11 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  secondsToRedirect: number;
+  secondsToRedirect = 3;
 
-  constructor(private router: Router) {
-    this.secondsToRedirect = 3;
-  }
+  constructor(private router: Router, private authenticationService: AuthenticationService) {}
 
   counter() {
     setTimeout(() => {
@@ -25,6 +24,7 @@ export class NotFoundComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authenticationService.logout();
     this.counter();
   }
 }

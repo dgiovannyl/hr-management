@@ -13,11 +13,10 @@ import { BackendModule } from './backend/backend.module';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { EmployeeModule } from './employee/employee.module';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectModule } from './project/project.module';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
