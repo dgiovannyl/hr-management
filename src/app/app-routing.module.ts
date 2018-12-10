@@ -25,7 +25,6 @@ const routes: Routes = [
     component: EmployeeComponent,
     canActivate: [AuthenticationGuard]
   },
-  { path: 'callback', redirectTo: 'login' },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: '**', component: NotFoundComponent }
 ];

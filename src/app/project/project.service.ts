@@ -39,10 +39,11 @@ export class ProjectService {
   }
 
   updateCreateProject(project: Project): Observable<any> {
-    const url = `${environment.backEndUrl}${environment.projectPath}/${project.id}`;
     if (project.id) {
+      const url = `${environment.backEndUrl}${environment.projectPath}/${project.id}`;
       return this.httpApiService.put(url, project);
     } else {
+      const url = `${environment.backEndUrl}${environment.projectPath}`;
       return this.httpApiService.post(url, project);
     }
   }

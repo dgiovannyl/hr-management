@@ -16,14 +16,14 @@ export class EditEmployeeComponent implements OnInit {
   selectedProject: number;
 
   ageFormControl = new FormControl();
-  birthDayFormControl = new FormControl();
+  birthdayFormControl = new FormControl();
   companyFormControl = new FormControl();
   nameFormControl = new FormControl();
   projectFormControl = new FormControl();
 
   createProjectForm = new FormGroup({
     age: this.ageFormControl,
-    birthDay: this.birthDayFormControl,
+    birthday: this.birthdayFormControl,
     company: this.companyFormControl,
     name: this.nameFormControl,
     project: this.projectFormControl
@@ -35,7 +35,7 @@ export class EditEmployeeComponent implements OnInit {
     private projectService: ProjectService
   ) {
     this.ageFormControl.setValue(data.age);
-    this.birthDayFormControl.setValue(data.birthday);
+    this.birthdayFormControl.setValue(data.birthday);
     this.companyFormControl.setValue(data.company);
     this.nameFormControl.setValue(data.name);
     this.projectFormControl.setValue(data.projectId);
@@ -54,11 +54,11 @@ export class EditEmployeeComponent implements OnInit {
     return {
       employee: {
         age: this.ageFormControl.value,
-        birthDay: new Date(this.birthDayFormControl.value),
-        company: this.ageFormControl.value,
+        birthday: this.birthdayFormControl.value,
+        company: this.companyFormControl.value,
         id: this.data.id,
         name: this.nameFormControl.value,
-        projectId: this.projectFormControl.value,
+        projectId: this.projectFormControl.value
       },
       selectedProject: this.projectFormControl.value,
       originalProject: this.data.projectId

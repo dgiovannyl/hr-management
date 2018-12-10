@@ -19,10 +19,11 @@ export class EmployeeService {
   }
 
   updateCreateEmployee(employee: Employee): Observable<any> {
-    const url = `${environment.backEndUrl}${environment.employeePath}/${employee.id}`;
     if (employee.id) {
+      const url = `${environment.backEndUrl}${environment.employeePath}/${employee.id}`;
       return this.httpApiService.put(url, employee);
     } else {
+      const url = `${environment.backEndUrl}${environment.employeePath}`;
       return this.httpApiService.post(url, employee);
     }
   }

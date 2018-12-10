@@ -77,7 +77,9 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.getEmployees().subscribe((employees: Employee[]) => {
       employees.forEach(employee => {
         const project = this.projects.find(projectItem => projectItem.id === employee.projectId);
-        employee.projectDescription = project.name;
+        if (project) {
+          employee.projectDescription = project.name;
+        }
       });
 
       this.dataSource = new MatTableDataSource(employees);
