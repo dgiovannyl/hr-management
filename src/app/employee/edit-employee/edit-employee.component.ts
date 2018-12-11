@@ -50,7 +50,7 @@ export class EditEmployeeComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  private getEmployeePayload() {
+  getEmployeePayload() {
     return {
       employee: {
         age: this.ageFormControl.value,

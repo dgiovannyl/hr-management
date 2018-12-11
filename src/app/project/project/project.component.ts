@@ -33,7 +33,7 @@ export class ProjectComponent implements OnInit {
     this.getProjects();
   }
 
-  private getProjects() {
+  getProjects() {
     this.projectService.getProjects().subscribe((projects: Project[]) => {
       this.dataSource = new MatTableDataSource(projects);
       this.dataSource.paginator = this.paginator;
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  private deleteProject(project: Project) {
+  deleteProject(project: Project) {
 
     // Open the dialog with parameters.
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -65,7 +65,7 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  private editProject(project: Project) {
+  editProject(project: Project) {
     this.projectService.updateCreateProject(project).subscribe(resp => {
       if (project.id) {
         this.customSnackBar.openSnackBar(this.snackBar, 'Project was updated.', 'OK');
@@ -76,12 +76,12 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  private newProject() {
+  newProject() {
     const project: Project = {};
     this.openProjectDialog(project);
   }
 
-  private openProjectDialog(project: Project) {
+  openProjectDialog(project: Project) {
     // Open the dialog with parameters.
     const dialogRef = this.dialog.open(EditProjectComponent, {
       width: this.editProjectWidth,

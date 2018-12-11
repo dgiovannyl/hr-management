@@ -18,11 +18,11 @@ export class ConfirmationDialogComponent {
     this.dialogRef.close();
   }
 
-  private setDefaultMessage() {
+  setDefaultMessage() {
     return this.data ? this.data.message : 'Confirm action';
   }
 
-  private setTitle() {
+  setTitle() {
     return this.data ? this.data.title : 'Confirm.';
   }
 }
