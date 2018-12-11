@@ -1,0 +1,13 @@
+<h4>{{ setTitle() }}</h4>
+
+<div class="dialog-container">
+
+  <div>{{ setDefaultMessage() }}</div>
+
+  <div mat-dialog-actions class="center-btn">
+    <button class="btn btn-secundary" mat-button (click)="onNoClick()">Cancelar</button>
+
+    <button class="btn btn-secundary" mat-button [mat-dialog-close]="dialogCloseData">Aceptar</button>
+  </div>
+
+</div>
