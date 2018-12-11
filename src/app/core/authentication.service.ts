@@ -25,9 +25,13 @@ export class AuthenticationService {
       .snapshotChanges()
       .pipe(
         map(todoSnap => {
-          const authData: Authentication = todoSnap[0].payload.doc.data();
-          localStorage.setItem(this.authKey, authData.key);
-          return !!authData.key;
+          if (todoSnap[0]) {
+            const authData: Authentication = todoSnap[0].payload.doc.data();
+            localStorage.setItem(this.authKey, authData.key);
+            return !!authData.key;
+          } else {
+            of(false);
+          }
         }),
         first()
       );
@@ -50,8 +54,12 @@ export class AuthenticationService {
         .snapshotChanges()
         .pipe(
           map(todoSnap => {
-            const authData: Authentication = todoSnap[0].payload.doc.data();
-            return !!authData.key;
+            if (todoSnap[0]) {
+              const authData: Authentication = todoSnap[0].payload.doc.data();
+              return !!authData.key;
+            } else {
+
+            }
           })
         );
     } else {

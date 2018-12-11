@@ -8,14 +8,14 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" name="username">
+              <input matInput placeholder="Username" name="username" [formControl]="userNameFormControl">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Password" type="password" name="password">
+              <input matInput placeholder="Password" type="password" name="password" [formControl]="passwordFormControl">
             </mat-form-field>
           </td>
         </tr>

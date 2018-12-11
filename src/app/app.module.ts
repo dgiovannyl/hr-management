@@ -12,8 +12,6 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { BackendModule } from './backend/backend.module';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { EmployeeModule } from './employee/employee.module';
-import { ProjectModule } from './project/project.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,14 +22,11 @@ import { ProjectModule } from './project/project.module';
     HttpClientModule,
     CoreModule,
 
-    ProjectModule,
     BackendModule,
     DashboardModule,
     AuthenticationModule,
-    EmployeeModule,
 
     MatDialogModule,
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
