@@ -1,5 +1,9 @@
 # HrManagement
 
+**HR Management** is an application your company needs to better supervise their employees. This application will allow the HR team to identify every employee in the company and the project they belong to, among other functionalities.
+
+**[SEE DEMO HERE](https://dgiovannyl.github.io/hr-management)**
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
 ## Development server
