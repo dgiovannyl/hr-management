@@ -13,9 +13,9 @@ export class HttpApiService {
       .delete(endpoint, reqOpts);
   }
 
-  get(endPoint: string): Observable<any> {
+  get<T>(endPoint: string): Observable<T> {
     return this.httpClient
-      .get(endPoint);
+      .get<T>(endPoint);
   }
 
   post(endPoint: string, body: any, reqOpts?: any): Observable<any> {

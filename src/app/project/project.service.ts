@@ -33,9 +33,9 @@ export class ProjectService {
     return this.httpApiService.delete(url);
   }
 
-  getProjects(): Observable<any> {
+  getProjects(): Observable<Project[]> {
     const url = `${environment.backEndUrl}${environment.projectPath}`;
-    return this.httpApiService.get(url);
+    return this.httpApiService.get<Project[]>(url);
   }
 
   updateCreateProject(project: Project): Observable<any> {

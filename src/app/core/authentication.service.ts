@@ -58,7 +58,7 @@ export class AuthenticationService {
               const authData: Authentication = todoSnap[0].payload.doc.data();
               return !!authData.key;
             } else {
-
+              return false;
             }
           })
         );

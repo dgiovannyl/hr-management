@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/authentication.service';
+import { CustomSnackbarService } from 'src/app/shared/custom-snackbar/custom-snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,20 @@ import { AuthenticationService } from 'src/app/core/authentication.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  userNameFormControl = new FormControl();
-  passwordFormControl = new FormControl();
+  userNameFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [Validators.required]);
 
   loginForm = new FormGroup({
     username: this.userNameFormControl,
     password: this.passwordFormControl
   });
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) {}
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private customSnackbarService: CustomSnackbarService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {}
 
@@ -27,7 +34,11 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.login(userName, password).subscribe((isLogged: boolean) => {
       if (!isLogged) {
-        alert('Your account or password is incorrect, please try again.');
+        this.customSnackbarService.openSnackBar(
+          this.snackBar,
+          'Your account or password is incorrect, please try again.',
+          ''
+        );
       }
       this.router.navigate(['/dashboard']);
     });
