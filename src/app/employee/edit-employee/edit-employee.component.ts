@@ -16,7 +16,7 @@ import { Employee } from '../employee.interface';
 export class EditEmployeeComponent implements OnInit {
   colorList$: Observable<Color[]>;
   employee: Employee;
-  projects: Project[];
+  projects$: Observable<Project[]>;
   selectedProject: number;
 
   ageFormControl = new FormControl();
@@ -40,11 +40,11 @@ export class EditEmployeeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Employee,
     private projectService: ProjectService,
     private colorService: ColorService
-  ) {
-    this.colorList$ = this.colorService.getColors();
-  }
+  ) {}
 
   ngOnInit() {
+    this.colorList$ = this.colorService.getColors();
+    this.projects$ = this.projectService.getProjects();
     this.initializeForm(this.data);
   }
 
@@ -75,8 +75,5 @@ export class EditEmployeeComponent implements OnInit {
     this.nameFormControl.setValue(employee.name);
     this.projectFormControl.setValue(employee.projectId);
     this.favoriteColorFormControl.setValue(employee.favoriteColor);
-    this.projectService.getProjects().subscribe((projects: Project[]) => {
-      this.projects = projects;
-    });
   }
 }
