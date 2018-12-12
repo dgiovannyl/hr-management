@@ -14,5 +14,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button (click)="onNoClick()">Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="getProjectPayload()">Save</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="getProjectPayload()" [disabled]="!createProjectForm.valid">Save</button>
 </div>

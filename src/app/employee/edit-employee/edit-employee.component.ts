@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/project/project.interface';
@@ -19,12 +19,12 @@ export class EditEmployeeComponent implements OnInit {
   projects$: Observable<Project[]>;
   selectedProject: number;
 
-  ageFormControl = new FormControl();
-  birthdayFormControl = new FormControl();
-  companyFormControl = new FormControl();
-  favoriteColorFormControl = new FormControl();
-  nameFormControl = new FormControl();
-  projectFormControl = new FormControl();
+  ageFormControl = new FormControl('', [Validators.required]);
+  birthdayFormControl = new FormControl('', [Validators.required]);
+  companyFormControl = new FormControl('', [Validators.required]);
+  favoriteColorFormControl = new FormControl('', [Validators.required]);
+  nameFormControl = new FormControl('', [Validators.required]);
+  projectFormControl = new FormControl('', [Validators.required]);
 
   createProjectForm = new FormGroup({
     age: this.ageFormControl,
@@ -39,7 +39,7 @@ export class EditEmployeeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Employee,
     private colorService: ColorService,
     private dialogRef: MatDialogRef<EditEmployeeComponent>,
-    private projectService: ProjectService,
+    private projectService: ProjectService
   ) {}
 
   ngOnInit() {
