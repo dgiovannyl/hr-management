@@ -29,7 +29,11 @@ export class EditProjectComponent implements OnInit {
     this.teamSizeFormControl.disable();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
+  get editOrCreate() {
+    return this.data.id ? 'Edit' : 'Create';
+  }
 
   getProjectPayload(): Project {
     return {

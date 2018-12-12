@@ -52,6 +52,10 @@ export class EditEmployeeComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  get editOrCreate() {
+    return this.data.id ? 'Edit' : 'Create';
+  }
+
   getEmployeePayload() {
     return {
       employee: {
