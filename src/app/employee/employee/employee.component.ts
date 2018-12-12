@@ -60,7 +60,7 @@ export class EmployeeComponent implements OnInit {
     this.getEmployees();
   }
 
-  editEmployee(employee: Employee) {
+  editEmployee(employee: Employee): void {
     this.employeeService.updateCreateEmployee(employee).subscribe(resp => {
       if (employee.id) {
         this.customSnackBar.openSnackBar(this.snackBar, 'Employee was updated.', 'OK');
@@ -71,7 +71,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  deleteEmployee(employee: Employee) {
+  deleteEmployee(employee: Employee): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: 'Delete employee.',
@@ -90,7 +90,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  getEmployees() {
+  getEmployees(): void {
     this.employeeService.getEmployees().subscribe((employees: Employee[]) => {
       employees.forEach((employee: Employee) => {
         const project = this.projects.find(projectItem => projectItem.id === employee.projectId);
@@ -110,11 +110,11 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  newEmployee() {
+  newEmployee(): void {
     this.openEmployeeDialog({});
   }
 
-  openEmployeeDialog(employee: Employee) {
+  openEmployeeDialog(employee: Employee): void {
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
       width: this.editEmployeeWidth,
       data: employee

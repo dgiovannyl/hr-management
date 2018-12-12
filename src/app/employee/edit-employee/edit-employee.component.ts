@@ -36,10 +36,10 @@ export class EditEmployeeComponent implements OnInit {
   });
 
   constructor(
-    private dialogRef: MatDialogRef<EditEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Employee,
+    private colorService: ColorService,
+    private dialogRef: MatDialogRef<EditEmployeeComponent>,
     private projectService: ProjectService,
-    private colorService: ColorService
   ) {}
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class EditEmployeeComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  get editOrCreate() {
+  get editOrCreate(): string {
     return this.data.id ? 'Edit' : 'Create';
   }
 
@@ -72,7 +72,7 @@ export class EditEmployeeComponent implements OnInit {
     };
   }
 
-  initializeForm(employee: Employee) {
+  initializeForm(employee: Employee): void {
     this.ageFormControl.setValue(employee.age);
     this.birthdayFormControl.setValue(employee.birthday);
     this.companyFormControl.setValue(employee.company);

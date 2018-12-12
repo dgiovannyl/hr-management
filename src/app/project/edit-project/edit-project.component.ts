@@ -9,9 +9,9 @@ import { Project } from '../project.interface';
   styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit {
+  customerNameFormControl = new FormControl();
   nameFormControl = new FormControl();
   teamSizeFormControl = new FormControl();
-  customerNameFormControl = new FormControl();
 
   createProjectForm = new FormGroup({
     customerName: this.customerNameFormControl,
@@ -31,7 +31,7 @@ export class EditProjectComponent implements OnInit {
 
   ngOnInit() {}
 
-  get editOrCreate() {
+  get editOrCreate(): string {
     return this.data.id ? 'Edit' : 'Create';
   }
 
