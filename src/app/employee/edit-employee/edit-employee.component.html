@@ -21,6 +21,14 @@
   </mat-form-field>
 
   <mat-form-field>
+      <mat-select placeholder="Favorite Color" name="color" [formControl]="favoriteColorFormControl">
+          <mat-option *ngFor="let color of colorList$ | async" [value]="color.id">
+              {{ color.name }}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
     <mat-select placeholder="Projects" [formControl]="projectFormControl" name="project">
       <mat-option *ngFor="let project of projects" [value]="project.id">
         {{ project.name }}

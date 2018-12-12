@@ -15,6 +15,7 @@ export class BackendService implements InMemoryDbService {
       { id: 6, name: 'white' },
       { id: 7, name: 'yellow' }
     ];
+
     const employees = [
       {
         id: 1,
@@ -22,7 +23,8 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 1',
         age: 33,
         birthday: new Date('October 13, 1979 23:13:00'),
-        projectId: 1
+        projectId: 1,
+        favoriteColor: 2,
       },
       {
         id: 2,
@@ -30,7 +32,8 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 1',
         age: 30,
         birthday: new Date('December 1, 1994 11:13:00'),
-        projectId: 1
+        projectId: 1,
+        favoriteColor: 2,
       },
       {
         id: 3,
@@ -38,7 +41,8 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 3',
         age: 27,
         birthday: new Date('July 25, 1996 22:13:00'),
-        projectId: 3
+        projectId: 3,
+        favoriteColor: 7,
       },
       {
         id: 4,
@@ -46,7 +50,8 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 2',
         age: 30,
         birthday: new Date('December 5, 1994 10:13:00'),
-        projectId: 5
+        projectId: 5,
+        favoriteColor: 5,
       },
       {
         id: 5,
@@ -54,7 +59,8 @@ export class BackendService implements InMemoryDbService {
         company: 'Company 2',
         age: 30,
         birthday: new Date('March 14, 1930 15:13:00'),
-        projectId: 6
+        projectId: 6,
+        favoriteColor: 1,
       }
     ];
 

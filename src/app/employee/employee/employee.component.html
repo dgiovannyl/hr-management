@@ -1,7 +1,7 @@
 <div>
   <h1>Employees.</h1>
 
-  <button class="btn btn-secundary float-right" mat-button (click)="newEmployee()">New</button>
+  <button mat-raised-button color="primary" (click)="newEmployee()">New Employee</button>
 </div>
 
 <div>
@@ -30,6 +30,12 @@
     <ng-container matColumnDef="birthday">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday </th>
       <td mat-cell *matCellDef="let row"> {{row.birthday | date:'MMM d, yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="favoriteColor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Favorite Color </th>
+      <td mat-cell *matCellDef="let row"><span>{{row.favoriteColorDescription}}</span></td>
+
     </ng-container>
 
     <ng-container matColumnDef="project">

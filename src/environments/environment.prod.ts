@@ -9,6 +9,7 @@ export const environment = {
     messagingSenderId: '117065232685'
   },
   backEndUrl: 'http://localhost:4200/api/',
+  colorsPath: 'colors',
   employeePath: 'employees',
   projectPath: 'projects',
   snackBarDelay: 2000,
