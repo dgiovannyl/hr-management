@@ -38,7 +38,7 @@ export class AuthenticationService {
     return response;
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem(this.authKey);
   }
 

@@ -33,16 +33,7 @@ export class ProjectComponent implements OnInit {
     this.getProjects();
   }
 
-  getProjects() {
-    this.projectService.getProjects().subscribe((projects: Project[]) => {
-      this.dataSource = new MatTableDataSource(projects);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-  }
-
-  deleteProject(project: Project) {
-
+  deleteProject(project: Project): void {
     // Open the dialog with parameters.
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: {
@@ -55,9 +46,6 @@ export class ProjectComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if (data && data.accept === true) {
         this.projectService.delete(project.id).subscribe(resp => {
-          /* const position = this.projects.indexOf(project);
-          const remove = this.projects.splice(position, 1);
-          this.dataSource.data = this.projects; */
           this.getProjects();
           this.customSnackBar.openSnackBar(this.snackBar, 'Project was deleted.', 'OK');
         });
@@ -65,7 +53,15 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  editProject(project: Project) {
+  getProjects(): void {
+    this.projectService.getProjects().subscribe((projects: Project[]) => {
+      this.dataSource = new MatTableDataSource(projects);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  editProject(project: Project): void {
     this.projectService.updateCreateProject(project).subscribe(resp => {
       if (project.id) {
         this.customSnackBar.openSnackBar(this.snackBar, 'Project was updated.', 'OK');
@@ -76,12 +72,12 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  newProject() {
+  newProject(): void {
     const project: Project = {};
     this.openProjectDialog(project);
   }
 
-  openProjectDialog(project: Project) {
+  openProjectDialog(project: Project): void {
     // Open the dialog with parameters.
     const dialogRef = this.dialog.open(EditProjectComponent, {
       width: this.editProjectWidth,

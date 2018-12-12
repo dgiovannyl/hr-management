@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core/authentication.service';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { CustomSnackbarService } from 'src/app/shared/custom-snackbar/custom-snackbar.service';
 
 @Component({

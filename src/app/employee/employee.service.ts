@@ -13,9 +13,9 @@ export class EmployeeService {
     return this.httpApiService.delete(url);
   }
 
-  getEmployees(): Observable<any> {
+  getEmployees<T>(): Observable<T> {
     const url = `${environment.backEndUrl}${environment.employeePath}`;
-    return this.httpApiService.get(url);
+    return this.httpApiService.get<T>(url);
   }
 
   updateCreateEmployee(employee: Employee): Observable<any> {

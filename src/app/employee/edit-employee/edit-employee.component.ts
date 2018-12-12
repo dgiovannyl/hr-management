@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/project/project.interface';
@@ -16,15 +16,15 @@ import { Employee } from '../employee.interface';
 export class EditEmployeeComponent implements OnInit {
   colorList$: Observable<Color[]>;
   employee: Employee;
-  projects: Project[];
+  projects$: Observable<Project[]>;
   selectedProject: number;
 
-  ageFormControl = new FormControl();
-  birthdayFormControl = new FormControl();
-  companyFormControl = new FormControl();
-  favoriteColorFormControl = new FormControl();
-  nameFormControl = new FormControl();
-  projectFormControl = new FormControl();
+  ageFormControl = new FormControl('', [Validators.required]);
+  birthdayFormControl = new FormControl('', [Validators.required]);
+  companyFormControl = new FormControl('', [Validators.required]);
+  favoriteColorFormControl = new FormControl('', [Validators.required]);
+  nameFormControl = new FormControl('', [Validators.required]);
+  projectFormControl = new FormControl('', [Validators.required]);
 
   createProjectForm = new FormGroup({
     age: this.ageFormControl,
@@ -36,20 +36,24 @@ export class EditEmployeeComponent implements OnInit {
   });
 
   constructor(
-    private dialogRef: MatDialogRef<EditEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Employee,
-    private projectService: ProjectService,
-    private colorService: ColorService
-  ) {
-    this.colorList$ = this.colorService.getColors();
-  }
+    private colorService: ColorService,
+    private dialogRef: MatDialogRef<EditEmployeeComponent>,
+    private projectService: ProjectService
+  ) {}
 
   ngOnInit() {
+    this.colorList$ = this.colorService.getColors();
+    this.projects$ = this.projectService.getProjects();
     this.initializeForm(this.data);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  get editOrCreate(): string {
+    return this.data.id ? 'Edit' : 'Create';
   }
 
   getEmployeePayload() {
@@ -68,15 +72,12 @@ export class EditEmployeeComponent implements OnInit {
     };
   }
 
-  initializeForm(employee: Employee) {
+  initializeForm(employee: Employee): void {
     this.ageFormControl.setValue(employee.age);
     this.birthdayFormControl.setValue(employee.birthday);
     this.companyFormControl.setValue(employee.company);
     this.nameFormControl.setValue(employee.name);
     this.projectFormControl.setValue(employee.projectId);
     this.favoriteColorFormControl.setValue(employee.favoriteColor);
-    this.projectService.getProjects().subscribe((projects: Project[]) => {
-      this.projects = projects;
-    });
   }
 }

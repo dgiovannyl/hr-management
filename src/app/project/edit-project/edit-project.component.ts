@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Project } from '../project.interface';
 
@@ -9,9 +9,9 @@ import { Project } from '../project.interface';
   styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit {
-  nameFormControl = new FormControl();
-  teamSizeFormControl = new FormControl();
-  customerNameFormControl = new FormControl();
+  customerNameFormControl = new FormControl('', [Validators.required]);
+  nameFormControl = new FormControl('', [Validators.required]);
+  teamSizeFormControl = new FormControl('', [Validators.required]);
 
   createProjectForm = new FormGroup({
     customerName: this.customerNameFormControl,
@@ -29,7 +29,11 @@ export class EditProjectComponent implements OnInit {
     this.teamSizeFormControl.disable();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
+  get editOrCreate(): string {
+    return this.data.id ? 'Edit' : 'Create';
+  }
 
   getProjectPayload(): Project {
     return {

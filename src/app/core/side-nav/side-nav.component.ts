@@ -1,8 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -30,7 +29,7 @@ export class SideNavComponent implements OnInit, OnDestroy {
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
-  logout() {
+  logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
   }

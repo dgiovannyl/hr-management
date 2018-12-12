@@ -1,22 +1,18 @@
-<h4>Create - Edit project</h4>
+<h1 mat-dialog-title>{{editOrCreate}} project</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Name" [formControl]="nameFormControl">
+  </mat-form-field>
 
-<div class="dialog-container">
-    <mat-form-field>
-        <input matInput placeholder="Name" [formControl]="nameFormControl">
-    </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Team Size" [formControl]="teamSizeFormControl">
+  </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Team Size" [formControl]="teamSizeFormControl">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Customer Name" [formControl]="customerNameFormControl">
-    </mat-form-field>
-
-    <div mat-dialog-actions class="center-btn">
-        <button class="btn btn-secundary" (click)="onNoClick()">Cancel</button>
-
-        <button class="btn btn-secundary" mat-button [mat-dialog-close]="getProjectPayload()">Save</button>
-    </div>
-
+  <mat-form-field>
+    <input matInput placeholder="Customer Name" [formControl]="customerNameFormControl">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="getProjectPayload()" [disabled]="!createProjectForm.valid">Save</button>
 </div>

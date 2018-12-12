@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core/authentication.service';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
   selector: 'app-not-found',
@@ -12,7 +12,12 @@ export class NotFoundComponent implements OnInit {
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {}
 
-  counter() {
+  ngOnInit() {
+    this.authenticationService.logout();
+    this.counter();
+  }
+
+  counter(): void {
     setTimeout(() => {
       if (this.secondsToRedirect <= 0) {
         this.router.navigate(['/login']);
@@ -21,10 +26,5 @@ export class NotFoundComponent implements OnInit {
         this.counter();
       }
     }, 1000);
-  }
-
-  ngOnInit() {
-    this.authenticationService.logout();
-    this.counter();
   }
 }
